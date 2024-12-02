@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import UserManagement from "./components/UserManagement";
+import RoleManagement from "./components/RoleManagement";
+
+const App = () => (
+  <Router>
+    <nav>
+      <Link to="/users">User Management</Link> |{" "}
+      <Link to="/roles">Role Management</Link>
+    </nav>
+    <Routes>
+      <Route path="/users" element={<UserManagement />} />
+      <Route path="/roles" element={<RoleManagement />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
